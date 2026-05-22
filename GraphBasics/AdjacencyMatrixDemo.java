@@ -2,7 +2,7 @@ package GraphBasics;
 
 import java.util.*;
 
-class Graph {
+class AdjacencyMatGraph {
 
     /**
      * Adjacency Matrix implementation of a Graph.
@@ -34,7 +34,7 @@ class Graph {
 
     int adjMat[][];
 
-    Graph(int nodes) {
+    AdjacencyMatGraph(int nodes) {
         adjMat=new int[nodes][nodes];
     }
 
@@ -82,8 +82,6 @@ class Graph {
 class AdjacencyMatrixDemo {
 
     public static void main(String args[]) {
-
-        Scanner sc=new Scanner(System.in);
         
         int nodes=4;
 
@@ -93,12 +91,12 @@ class AdjacencyMatrixDemo {
         int edges[][] = {{0,2},{0,1},{1,3}};
 
         //Directed Graph
-        Graph dg=new Graph(nodes);
+        AdjacencyMatGraph dg=new AdjacencyMatGraph(nodes);
         dg.addEdgesInMat(edges,true);
         dg.printMat(true);
 
         //Undirected Graph
-        Graph udg=new Graph(nodes);
+        AdjacencyMatGraph udg=new AdjacencyMatGraph(nodes);
         udg.addEdgesInMat(edges,false);
         udg.printMat(false);
 
@@ -107,15 +105,13 @@ class AdjacencyMatrixDemo {
 
         int edgesWithWeight[][] = {{0,2,10},{0,1,20},{1,3,30}};
 
-        Graph dgw=new Graph(nodes);
+        AdjacencyMatGraph dgw=new AdjacencyMatGraph(nodes);
         dgw.addEdgesWithWeightInMat(edgesWithWeight,true);
         dgw.printMat(true);
 
         //Undirected Graph
-        Graph udgw=new Graph(nodes);
+        AdjacencyMatGraph udgw=new AdjacencyMatGraph(nodes);
         udgw.addEdgesWithWeightInMat(edgesWithWeight,false);
         udgw.printMat(false);
-
-        sc.close();
     }
 }
