@@ -49,6 +49,18 @@ class Graph {
         }
     }
 
+    public void addEdgesWithWeightInMat(int edges[][],boolean isDir) {
+        
+        for(int e[] : edges) {
+            int u=e[0];
+            int v=e[1];
+            int w=e[2];
+            adjMat[u][v]=w;
+            if(!isDir)
+                adjMat[v][u]=w;
+        }
+    }
+
     public void printMat(boolean isDir) {
 
         int i=0;
@@ -73,8 +85,12 @@ class AdjacencyMatrixDemo {
 
         Scanner sc=new Scanner(System.in);
         
-        int edges[][] = {{0,2},{0,1},{1,3}};
         int nodes=4;
+
+        //Without Weight
+        System.out.println("1.Edges without weight\n");
+
+        int edges[][] = {{0,2},{0,1},{1,3}};
 
         //Directed Graph
         Graph dg=new Graph(nodes);
@@ -85,6 +101,20 @@ class AdjacencyMatrixDemo {
         Graph udg=new Graph(nodes);
         udg.addEdgesInMat(edges,false);
         udg.printMat(false);
+
+        //With Weight
+        System.out.println("2.Edges with weight\n");
+
+        int edgesWithWeight[][] = {{0,2,10},{0,1,20},{1,3,30}};
+
+        Graph dgw=new Graph(nodes);
+        dgw.addEdgesWithWeightInMat(edgesWithWeight,true);
+        dgw.printMat(true);
+
+        //Undirected Graph
+        Graph udgw=new Graph(nodes);
+        udgw.addEdgesWithWeightInMat(edgesWithWeight,false);
+        udgw.printMat(false);
 
         sc.close();
     }
